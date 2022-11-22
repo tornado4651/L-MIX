@@ -1,15 +1,20 @@
 package com.tornado4651.lmix.boot.beans;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.util.Date;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginUserBaseInfoDTO {
+public class LoginUserBaseInfoDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * 用户名
      */
@@ -21,7 +26,7 @@ public class LoginUserBaseInfoDTO {
     /**
      * 昵称
      */
-    private String nickName;
+    private String nickname;
     /**
      * 性别（0女；1男）
      */
@@ -29,7 +34,8 @@ public class LoginUserBaseInfoDTO {
     /**
      * 出生年月
      */
-    private String birthday;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
     /**
      * 电话
      */

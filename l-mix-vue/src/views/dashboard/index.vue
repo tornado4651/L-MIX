@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">登录名: {{ user.username }}</div>
-    <div class="dashboard-text">昵称: {{ user.nickName }}</div>
+    <div class="dashboard-text">昵称: {{ user.nickname }}</div>
     <div class="dashboard-text">性别: {{ user.gender }}</div>
     <div class="dashboard-text">出生年月: {{ user.birthday }}</div>
     <div class="dashboard-text">电话: {{ user.telephone }}</div>

@@ -6,7 +6,7 @@ const getDefaultState = () => {
   return {
     token: getToken(),
     username: '',
-    nickName: '',
+    nickname: '',
     telephone: '',
     avatar: '',
     birthday: '',
@@ -35,11 +35,10 @@ const mutations = {
   SET_TEL: (state, telephone) =>{
     state.telephone = telephone
   },
-  SET_NICKNAME: (state, nickName) => {
-    state.nickName = nickName
+  SET_NICKNAME: (state, nickname) => {
+    state.nickname = nickname
   },
   SET_AVATAR: (state, avatar) => {
-    console.log("avatar: "+avatar)
     state.avatar = avatar
   }
 }
@@ -51,7 +50,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
-        console.log("token"+data)
         commit('SET_TOKEN', data)
         setToken(data)
         resolve()
@@ -69,9 +67,9 @@ const actions = {
         if (!data) {
           return reject('登陆信息验证失败，请重新登陆！')
         }
-        const { username, nickName, birthday, gender, telephone, avatar } = data
+        const { username, nickname, birthday, gender, telephone, avatar } = data
         commit('SET_USERNAME', username)
-        commit('SET_NICKNAME', nickName)
+        commit('SET_NICKNAME', nickname)
         commit('SET_AGE', birthday)
         commit('SET_GENDER', gender)
         commit('SET_TEL', telephone)

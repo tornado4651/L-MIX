@@ -32,6 +32,10 @@ public class Response {
         return new Response(ResponseConstants.SUCCESS_CODE, ResponseConstants.SUCCESS_MSG, data);
     }
 
+    public static Response success(String msg){
+        return new Response(ResponseConstants.SUCCESS_CODE, msg, null);
+    }
+
     public static Response success(){
         return new Response(ResponseConstants.SUCCESS_CODE, ResponseConstants.SUCCESS_MSG, null);
     }
