@@ -4,10 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,15 +15,12 @@ import java.util.Date;
  */
 @TableName(value ="user")
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class User implements Serializable {
     /**
      * id
      */
     @TableId(type = IdType.AUTO)
-    private Object id;
+    private Integer id;
 
     /**
      * 用户名
@@ -54,7 +48,7 @@ public class User implements Serializable {
     private Date birthday;
 
     /**
-     * 联系电话
+     * 联系电话
      */
     private String telephone;
 
@@ -62,6 +56,11 @@ public class User implements Serializable {
      * 头像
      */
     private String avatar;
+
+    /**
+     * 用户状态（0：锁定；1：正常）
+     */
+    private Short status;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -85,7 +84,8 @@ public class User implements Serializable {
             && (this.getGender() == null ? other.getGender() == null : this.getGender().equals(other.getGender()))
             && (this.getBirthday() == null ? other.getBirthday() == null : this.getBirthday().equals(other.getBirthday()))
             && (this.getTelephone() == null ? other.getTelephone() == null : this.getTelephone().equals(other.getTelephone()))
-            && (this.getAvatar() == null ? other.getAvatar() == null : this.getAvatar().equals(other.getAvatar()));
+            && (this.getAvatar() == null ? other.getAvatar() == null : this.getAvatar().equals(other.getAvatar()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()));
     }
 
     @Override
@@ -100,6 +100,7 @@ public class User implements Serializable {
         result = prime * result + ((getBirthday() == null) ? 0 : getBirthday().hashCode());
         result = prime * result + ((getTelephone() == null) ? 0 : getTelephone().hashCode());
         result = prime * result + ((getAvatar() == null) ? 0 : getAvatar().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         return result;
     }
 
@@ -117,6 +118,7 @@ public class User implements Serializable {
         sb.append(", birthday=").append(birthday);
         sb.append(", telephone=").append(telephone);
         sb.append(", avatar=").append(avatar);
+        sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

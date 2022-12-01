@@ -23,7 +23,7 @@ public class TestController {
     @PostMapping("/user/login")
     public Response login(@RequestBody LoginUserDTO userDTO){
         String token = userService.login(userDTO.getUsername(), userDTO.getPassword());
-        return Response.success("登陆成功！", token);
+        return Response.success("登录成功！", token);
     }
 
     @GetMapping("/user/loginInfo")

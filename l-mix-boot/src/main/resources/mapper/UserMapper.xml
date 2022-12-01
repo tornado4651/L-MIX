@@ -5,14 +5,20 @@
 <mapper namespace="com.tornado4651.lmix.boot.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.tornado4651.lmix.boot.domain.User">
-            <id property="id" column="id" jdbcType="OTHER"/>
-            <result property="username" column="username" jdbcType="VARCHAR"/>
-            <result property="password" column="password" jdbcType="VARCHAR"/>
-            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
-            <result property="gender" column="gender" jdbcType="TINYINT"/>
-            <result property="birthday" column="birthday" jdbcType="DATE"/>
-            <result property="telephone" column="telephone" jdbcType="VARCHAR"/>
-            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <id property="id" column="id" jdbcType="OTHER"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="TINYINT"/>
+        <result property="birthday" column="birthday" jdbcType="DATE"/>
+        <result property="telephone" column="telephone" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
     </resultMap>
 
+    <select id="getLoginUserInfo" resultType="com.tornado4651.lmix.boot.beans.LoginUserBaseInfoDTO">
+        select username, nickname, avatar, gender, birthday, telephone, status
+        from user
+
+    </select>
 </mapper>

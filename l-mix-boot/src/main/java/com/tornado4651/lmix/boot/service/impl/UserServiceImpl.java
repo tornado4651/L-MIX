@@ -1,52 +1,87 @@
 package com.tornado4651.lmix.boot.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.tornado4651.lmix.boot.beans.LoginUserBaseInfoDTO;
+import com.tornado4651.lmix.boot.beans.UserDetail;
 import com.tornado4651.lmix.boot.common.RedisConstants;
 import com.tornado4651.lmix.boot.domain.User;
 import com.tornado4651.lmix.boot.exception.UserException;
 import com.tornado4651.lmix.boot.mapper.UserMapper;
 import com.tornado4651.lmix.boot.service.UserService;
+import com.tornado4651.lmix.boot.utils.JwtUtil;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-
+/**
+* @author tornado4651
+* @description 针对表【user】的数据库操作Service实现
+* @createDate 2022-11-22 14:33:26
+*/
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User>
+    implements UserService{
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+
     @Override
-    public String login(String username, String password){
-        User user = baseMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUsername, username).eq(User::getPassword, password));
-        if(user != null){
-            String token = UUID.randomUUID().toString();
-            LoginUserBaseInfoDTO loginUserBaseInfoDTO = new LoginUserBaseInfoDTO();
-            BeanUtils.copyProperties(user, loginUserBaseInfoDTO);
-            redisTemplate.opsForValue().set(RedisConstants.LOGIN_USER_PREFIX+token, loginUserBaseInfoDTO,2, TimeUnit.HOURS);
-            return token;
-        }else{
-            throw new UserException("登陆失败！请重新登陆！");
+    public String login(String username, String password) {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
+        Authentication authenticate = authenticationManager.authenticate(token);
+        if(authenticate == null){
+            throw new UserException("登陆失败！");
         }
+        UserDetail userDetail = (UserDetail) authenticate.getPrincipal();
+        Integer userId = userDetail.getUser().getId();
+        String jwt = JwtUtil.createJWT(userId.toString());
+        redisTemplate.opsForValue().set(RedisConstants.LOGIN_USER_PREFIX+userId, userDetail);
+        return jwt;
     }
 
     @Override
     public LoginUserBaseInfoDTO getLoginUserBaseInfo(String token) {
-        Object data = redisTemplate.opsForValue().get(RedisConstants.LOGIN_USER_PREFIX+token);
-        if(data != null && data instanceof LoginUserBaseInfoDTO){
-            return (LoginUserBaseInfoDTO) data;
-        }else{
-            throw new UserException("登陆用户信息获取失败！请重新登陆！");
+        String userId = "";
+        try {
+            Claims claims = JwtUtil.parseJWT(token);
+            userId = claims.getSubject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("获取登陆用户信息失败！Token错误！");
         }
+        Object data = redisTemplate.opsForValue().get(RedisConstants.LOGIN_USER_PREFIX + userId);
+        if(data == null){
+            return null;
+        }
+        UserDetail userDetail = (UserDetail) data;
+        User user = userDetail.getUser();
+        LoginUserBaseInfoDTO userBaseInfoDTO = new LoginUserBaseInfoDTO();
+        BeanUtils.copyProperties(user, userBaseInfoDTO);
+        userBaseInfoDTO.setRoles(userDetail.getRoles());
+        return userBaseInfoDTO;
     }
 
     @Override
     public void logout(String token) {
-        redisTemplate.delete(token);
+        String userId;
+        try {
+            Claims claim = JwtUtil.parseJWT(token);
+            userId = claim.getSubject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new UserException("Token错误，退出失败！");
+        }
+        redisTemplate.delete(RedisConstants.LOGIN_USER_PREFIX+userId);
     }
 }
+
+
+
+
