@@ -11,6 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -19,20 +20,12 @@ import java.io.IOException;
 import java.util.Objects;
 
 @Component
-public class SecurityFilter implements Filter {
-
+public class SecurityFilter extends OncePerRequestFilter {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        Filter.super.init(filterConfig);
-    }
-
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String token = request.getHeader(SystemConstants.TOKEN_NAME);
         if (token == null || token.isEmpty()) {
@@ -63,8 +56,4 @@ public class SecurityFilter implements Filter {
         filterChain.doFilter(request, response);
     }
 
-    @Override
-    public void destroy() {
-        Filter.super.destroy();
-    }
 }
