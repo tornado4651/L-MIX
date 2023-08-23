@@ -1,0 +1,9 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: l-mix-admin
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost

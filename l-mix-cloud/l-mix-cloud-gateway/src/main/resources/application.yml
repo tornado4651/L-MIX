@@ -1,0 +1,23 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: l-mix-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost
+    gateway:
+      routes:
+        - id: l-mix-admin-route
+          uri: lb://l-mix-admin
+          predicates:
+            - Path=/admin/**
+          filters:
+            - StripPrefix=1
+        - id: l-mix-api-route
+          uri: lb://l-mix-api
+          predicates:
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
