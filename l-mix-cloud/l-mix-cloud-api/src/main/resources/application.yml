@@ -4,7 +4,7 @@ server:
     context-path: /
 spring:
   application:
-    name: l-mix-api
+    name: l-mix-cloud-api
   cloud:
     nacos:
       discovery:

@@ -1,18 +1,16 @@
-package com.tornado4651.lmix.cloud.gateway;
-
+package com.tornado4651.lmix.cloud.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * 网关服务
+ * 认证服务
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class LMixCloudGatewayAppication {
+public class LMixCloudAuthApplication {
     public static void main( String[] args ) {
-        SpringApplication.run(LMixCloudGatewayAppication.class, args);
-
+        SpringApplication.run(LMixCloudAuthApplication.class, args);
     }
 }

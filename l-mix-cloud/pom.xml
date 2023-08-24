@@ -16,12 +16,14 @@
 		<module>l-mix-cloud-admin</module>
 		<module>l-mix-cloud-gateway</module>
 		<module>l-mix-cloud-api</module>
+		<module>l-mix-cloud-auth</module>
 	</modules>
 
 
 
 	<properties>
 		<java.version>1.8</java.version>
+
 		<!--	spring-cloud-alibaba官方依赖版本说明：https://github.com/alibaba/spring-cloud-alibaba/wiki/版本说明	-->
 		<spring-boot.version>2.6.13</spring-boot.version>
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
@@ -31,6 +33,7 @@
 		<sentinel.version>1.8.6</sentinel.version>
 		<rocketmq.version>4.9.4</rocketmq.version>
 		<seata.version>1.7.0-native-rc2</seata.version>
+		<spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
 
 		<!-- 其他组件 -->
 		<mysql-connector.version>8.0.31</mysql-connector.version>
@@ -40,6 +43,8 @@
 		<fastjson2.version>2.0.20</fastjson2.version>
 		<lombok.version>1.18.26</lombok.version>
 		<netty.version>4.1.75.Final</netty.version>
+		<nimbus-jose-jwt.version>9.23</nimbus-jose-jwt.version>
+		<hutool.version>5.8.0</hutool.version>
 	</properties>
 
 	<dependencyManagement>

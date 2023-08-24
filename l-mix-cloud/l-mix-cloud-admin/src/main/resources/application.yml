@@ -2,7 +2,7 @@ server:
   port: 9001
 spring:
   application:
-    name: l-mix-admin
+    name: l-mix-cloud-admin
   cloud:
     nacos:
       discovery:

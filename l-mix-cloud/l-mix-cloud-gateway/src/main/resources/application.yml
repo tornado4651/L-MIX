@@ -2,7 +2,7 @@ server:
   port: 9000
 spring:
   application:
-    name: l-mix-gateway
+    name: l-mix-cloud-gateway
   cloud:
     nacos:
       discovery:
@@ -10,14 +10,39 @@ spring:
     gateway:
       routes:
         - id: l-mix-admin-route
-          uri: lb://l-mix-admin
+          uri: lb://l-mix-cloud-admin
           predicates:
             - Path=/admin/**
           filters:
             - StripPrefix=1
         - id: l-mix-api-route
-          uri: lb://l-mix-api
+          uri: lb://l-mix-cloud-api
           predicates:
             - Path=/api/**
           filters:
             - StripPrefix=1
+        - id: l-mix-auth-route
+          uri: lb://l-mix-cloud-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心动态创建路由的功能
+          lower-case-service-id: true # 使用小写服务名，默认是大写
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:9401/rsa/publicKey' # 配置RSA的公钥访问地址
+  redis:
+    database: 1
+    port: 6379
+    host: localhost
+    password:
+secure:
+  ignore:
+    urls: # 配置白名单路径
+      - "/actuator/**"
+      - "/auth/oauth/token"
