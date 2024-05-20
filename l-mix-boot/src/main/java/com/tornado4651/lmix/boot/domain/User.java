@@ -58,9 +58,9 @@ public class User implements Serializable {
     private String avatar;
 
     /**
-     * 用户状态（0：锁定；1：正常）
+     * 用户状态（0：锁定；1：正常; 3：暂时封禁）
      */
-    private Short status;
+    private Integer status;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

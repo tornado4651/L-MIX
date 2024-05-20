@@ -1,7 +1,8 @@
 package com.tornado4651.lmix.cloud.gateway.component;
 
 import cn.hutool.json.JSONUtil;
-import com.tornado4651.lmix.cloud.gateway.api.CommonResult;
+import com.tornado4651.lmix.cloud.common.bean.CommonResult;
+import com.tornado4651.lmix.cloud.common.bean.CommonResultCode;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 
 /**
@@ -22,13 +23,14 @@ import java.nio.charset.Charset;
  */
 @Component
 public class RestfulAccessDeniedHandler implements ServerAccessDeniedHandler {
+
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, AccessDeniedException denied) {
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(HttpStatus.OK);
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        String body= JSONUtil.toJsonStr(CommonResult.forbidden(denied.getMessage()));
-        DataBuffer buffer =  response.bufferFactory().wrap(body.getBytes(Charset.forName("UTF-8")));
+        String body= JSONUtil.toJsonStr(CommonResult.failed(CommonResultCode.UNAUTHORIZED, denied.getMessage()));
+        DataBuffer buffer =  response.bufferFactory().wrap(body.getBytes(StandardCharsets.UTF_8));
         return response.writeWith(Mono.just(buffer));
     }
 }

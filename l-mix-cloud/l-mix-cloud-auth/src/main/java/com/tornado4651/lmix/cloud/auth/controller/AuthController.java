@@ -1,7 +1,7 @@
 package com.tornado4651.lmix.cloud.auth.controller;
 
-import com.tornado4651.lmix.cloud.auth.api.CommonResult;
 import com.tornado4651.lmix.cloud.auth.domain.Oauth2TokenDto;
+import com.tornado4651.lmix.cloud.common.bean.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
@@ -29,7 +29,7 @@ public class AuthController {
      * Oauth2登录认证
      */
     @RequestMapping(value = "/token", method = RequestMethod.POST)
-    public CommonResult<Oauth2TokenDto> postAccessToken(Principal principal, @RequestParam Map<String, String> parameters) throws HttpRequestMethodNotSupportedException {
+    public CommonResult postAccessToken(Principal principal, @RequestParam Map<String, String> parameters) throws HttpRequestMethodNotSupportedException {
         OAuth2AccessToken oAuth2AccessToken = tokenEndpoint.postAccessToken(principal, parameters).getBody();
         Oauth2TokenDto oauth2TokenDto = Oauth2TokenDto.builder()
                 .token(oAuth2AccessToken.getValue())

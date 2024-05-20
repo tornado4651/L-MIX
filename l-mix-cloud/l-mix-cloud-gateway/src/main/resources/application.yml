@@ -35,14 +35,17 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: 'http://localhost:9401/rsa/publicKey' # 配置RSA的公钥访问地址
-  redis:
-    database: 1
-    port: 6379
-    host: localhost
-    password:
-secure:
-  ignore:
-    urls: # 配置白名单路径
-      - "/actuator/**"
-      - "/auth/oauth/token"
+          jwk-set-uri: 'http://localhost:9001/rsa/publicKey' # 配置RSA的公钥访问地址
+# 自定义配置
+lmix:
+  secure:
+    ignore:
+      uris: # 配置白名单路径
+        - "/actuator/**"
+        - "/auth/oauth/token"
+        - "/api/public/**"
+    auth_url_roles:
+      - uri: "/admin/test/adminInfo"
+        roles: ["ADMIN"]
+      - uri: "/admin/test/currentUser"
+        roles: ["ADMIN","USER"]

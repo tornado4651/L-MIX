@@ -1,11 +1,10 @@
 package com.tornado4651.lmix.cloud.admin.controller;
 
-import com.tornado4651.lmix.cloud.admin.feign.ApiFeign;
-import lombok.RequiredArgsConstructor;
-import org.springframework.util.ObjectUtils;
+import com.tornado4651.lmix.cloud.admin.holder.LoginUserHolder;
+import com.tornado4651.lmix.cloud.common.dto.UserDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,22 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2023/6/21 15:33
  */
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("test")
 public class TestContorller {
 
-    private final ApiFeign apiFeign;
+    @Autowired
+    private LoginUserHolder loginUserHolder;
 
-    @GetMapping("hello")
-    public String hello(@RequestParam("username") String username){
-        if (ObjectUtils.isEmpty(username)){
-            return "hello";
-        }
-        return "hello, "+username;
+    @GetMapping("/currentUser")
+    public UserDTO currentUser() {
+        return loginUserHolder.getCurrentUser();
     }
 
-    @GetMapping("apiFeign")
-    public String apiFeign(@RequestParam("username") String username){
-        return apiFeign.test(username);
+    @GetMapping("/adminInfo")
+    public String adminInfo() {
+        return "admin 才能访问的信息";
+    }
+
+    @GetMapping("/publicInfo")
+    public String publicInfo() {
+        return "公众 都可以访问的信息";
     }
 }

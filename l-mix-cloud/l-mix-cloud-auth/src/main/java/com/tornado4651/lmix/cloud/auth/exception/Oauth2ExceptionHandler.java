@@ -1,6 +1,6 @@
 package com.tornado4651.lmix.cloud.auth.exception;
 
-import com.tornado4651.lmix.cloud.auth.api.CommonResult;
+import com.tornado4651.lmix.cloud.common.bean.CommonResult;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
