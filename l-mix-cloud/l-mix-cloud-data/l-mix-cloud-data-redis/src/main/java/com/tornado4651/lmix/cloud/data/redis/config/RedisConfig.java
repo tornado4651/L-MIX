@@ -1,4 +1,4 @@
-package com.tornado4651.lmix.common.data.config;
+package com.tornado4651.lmix.cloud.data.redis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
