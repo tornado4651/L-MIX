@@ -13,16 +13,22 @@
     <name>l-mix-cloud-admin</name>
 
     <dependencies>
-
         <dependency>
             <groupId>com.tornado4651.lmix.cloud</groupId>
             <artifactId>l-mix-cloud-common</artifactId>
             <version>1.0.0</version>
         </dependency>
 
+
         <dependency>
             <groupId>com.tornado4651.lmix.cloud</groupId>
-            <artifactId>l-mix-cloud-data</artifactId>
+            <artifactId>l-mix-cloud-data-mybatis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tornado4651.lmix.cloud</groupId>
+            <artifactId>l-mix-cloud-data-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
 
@@ -30,6 +36,5 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
     </dependencies>
 </project>
