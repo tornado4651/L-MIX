@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.tornado4651.lmix.cloud.common.exception.AllExceptionHandler

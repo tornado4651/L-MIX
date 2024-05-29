@@ -30,6 +30,13 @@ public class CommonResult {
 
     /**
      * 成功返回结果
+     */
+    public static CommonResult success() {
+        return new CommonResult(CommonResultCode.SUCCESS.getCode(), CommonResultCode.SUCCESS.getMessage(), null);
+    }
+
+    /**
+     * 成功返回结果
      *
      * @param data 获取的数据
      */
