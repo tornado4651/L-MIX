@@ -2,7 +2,6 @@ package com.tornado4651.lmix.cloud.common.bean;
 
 /**
  * 枚举了一些常用API操作码
- * Created by macro on 2019/4/19.
  */
 public enum CommonResultCode {
     SUCCESS(200, "操作成功"),
