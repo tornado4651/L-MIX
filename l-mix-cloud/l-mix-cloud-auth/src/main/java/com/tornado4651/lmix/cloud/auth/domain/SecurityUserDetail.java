@@ -8,13 +8,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * 登录用户信息
- * Created by macro on 2020/6/19.
  */
 @Data
-public class SecurityUserDetial implements UserDetails {
+public class SecurityUserDetail implements UserDetails {
 
     /**
      * ID
@@ -29,32 +29,47 @@ public class SecurityUserDetial implements UserDetails {
      */
     private String password;
     /**
-     * 用户状态
+     * 用户昵称
+     */
+    private String nickname;
+    /**
+     * 是否允许
      */
     private Boolean enabled;
     /**
+     * 用户状态（0：锁定；1：正常; 3：暂时封禁）
+     */
+    private Integer status;
+    /**
+     * 用户角色
+     */
+    private List<String> roles;
+    /**
      * 权限数据
      */
-    private Collection<SimpleGrantedAuthority> roles;
+    private Collection<SimpleGrantedAuthority> authorities;
 
-    public SecurityUserDetial() {
+    public SecurityUserDetail() {
 
     }
 
-    public SecurityUserDetial(UserDTO userDTO) {
+    public SecurityUserDetail(UserDTO userDTO) {
         this.setId(userDTO.getId());
         this.setUsername(userDTO.getUsername());
         this.setPassword(userDTO.getPassword());
+        this.setNickname(userDTO.getNickname());
+        this.setStatus(userDTO.getStatus());
+        this.setRoles(userDTO.getRoles());
         this.setEnabled(userDTO.getStatus() == 1);
         if (userDTO.getRoles() != null) {
-            roles = new ArrayList<>();
-            userDTO.getRoles().forEach(item -> roles.add(new SimpleGrantedAuthority(item)));
+            authorities = new ArrayList<>();
+            userDTO.getRoles().forEach(item -> authorities.add(new SimpleGrantedAuthority(item)));
         }
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles;
+        return this.authorities;
     }
 
     @Override

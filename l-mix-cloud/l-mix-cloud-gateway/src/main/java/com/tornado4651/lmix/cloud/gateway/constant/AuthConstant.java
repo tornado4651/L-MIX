@@ -1,7 +1,7 @@
 package com.tornado4651.lmix.cloud.gateway.constant;
 
 /**
- * Created by macro on 2020/6/19.
+ * 授权常量
  */
 public class AuthConstant {
 

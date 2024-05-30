@@ -1,7 +1,7 @@
 package com.tornado4651.lmix.cloud.auth.service;
 
 import com.tornado4651.lmix.cloud.auth.constant.MessageConstant;
-import com.tornado4651.lmix.cloud.auth.domain.SecurityUserDetial;
+import com.tornado4651.lmix.cloud.auth.domain.SecurityUserDetail;
 import com.tornado4651.lmix.cloud.common.dto.UserDTO;
 import com.tornado4651.lmix.cloud.auth.feign.AdminFeign;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,17 +37,17 @@ public class UserServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
         }
         userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        SecurityUserDetial securityUserDetial = new SecurityUserDetial(userDTO);
-        if (!securityUserDetial.isEnabled()) {
+        SecurityUserDetail securityUserDetail = new SecurityUserDetail(userDTO);
+        if (!securityUserDetail.isEnabled()) {
             throw new DisabledException(MessageConstant.ACCOUNT_DISABLED);
-        } else if (!securityUserDetial.isAccountNonLocked()) {
+        } else if (!securityUserDetail.isAccountNonLocked()) {
             throw new LockedException(MessageConstant.ACCOUNT_LOCKED);
-        } else if (!securityUserDetial.isAccountNonExpired()) {
+        } else if (!securityUserDetail.isAccountNonExpired()) {
             throw new AccountExpiredException(MessageConstant.ACCOUNT_EXPIRED);
-        } else if (!securityUserDetial.isCredentialsNonExpired()) {
+        } else if (!securityUserDetail.isCredentialsNonExpired()) {
             throw new CredentialsExpiredException(MessageConstant.CREDENTIALS_EXPIRED);
         }
-        return securityUserDetial;
+        return securityUserDetail;
     }
 
 }
