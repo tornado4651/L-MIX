@@ -3,6 +3,7 @@ package com.tornado4651.lmix.cloud.admin.domain;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.tornado4651.lmix.cloud.data.mybatis.handler.SecurityHandler;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,8 +12,8 @@ import java.io.Serializable;
  * 
  * @TableName a_user
  */
-@TableName(value ="a_user")
 @Data
+@TableName(value ="a_user")
 public class User implements Serializable {
     /**
      * 用户ID
@@ -29,13 +30,13 @@ public class User implements Serializable {
     /**
      * 登录密码
      */
-    @TableField(value = "password")
+    @TableField(value = "password", typeHandler = SecurityHandler.class)
     private String password;
 
     /**
      * 昵称
      */
-    @TableField(value = "nick_name")
+    @TableField(value = "nickname")
     private String nickName;
 
     /**

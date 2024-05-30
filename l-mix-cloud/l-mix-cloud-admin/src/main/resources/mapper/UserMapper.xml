@@ -8,26 +8,38 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="username" column="username" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>
-            <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nickname" jdbcType="VARCHAR"/>
             <result property="phone" column="phone" jdbcType="VARCHAR"/>
             <result property="email" column="email" jdbcType="VARCHAR"/>
             <result property="status" column="status" jdbcType="TINYINT"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id,username,password,
-        nick_name,phone,email,
-        status
-    </sql>
+    <resultMap id="loginUserInfoMap" type="com.tornado4651.lmix.cloud.common.dto.UserDTO">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="nickname" column="nickname"/>
+        <result property="password" column="password"/>
+        <result property="status" column="status"/>
+        <!-- 角色信息使用 collection 属性来映射一对多关系 -->
+        <collection property="roles" ofType="String" column="id" select="getRoleNamesByUserId"/>
+    </resultMap>
 
-
-    <select id="getLoginUserInfo" resultType="com.tornado4651.lmix.cloud.common.dto.UserDTO">
-        select a_user.id, a_user.username,  a_user.password, a_user.status
-        from a_user
-        <where>
-            <if test="username != null and username != ''">
-                a_user.username = #{username}
-            </if>
-        </where>
+    <select id="getLoginUserInfo"
+            resultType="com.tornado4651.lmix.cloud.common.dto.UserDTO"
+            resultMap="loginUserInfoMap">
+        <if test="username != null and username != ''">
+            select a_user.id, a_user.username, a_user.nickname, a_user.password, a_user.status
+            from a_user
+            left join lmix.a_user_role aur on a_user.id = aur.user_id
+            left join lmix.a_role ar on aur.role_id = ar.id
+            where a_user.username = #{username};
+        </if>
+    </select>
+    
+    <select id="getRoleNamesByUserId" resultType="java.lang.String">
+        select name
+        from a_role
+        join a_user_role on a_role.id = a_user_role.role_id
+        where a_user_role.user_id = #{userId};
     </select>
 </mapper>

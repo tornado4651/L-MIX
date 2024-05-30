@@ -1,5 +1,6 @@
 package com.tornado4651.lmix.cloud.gateway.filter;
 
+import com.tornado4651.lmix.cloud.common.constants.AuthConstant;
 import com.tornado4651.lmix.cloud.gateway.config.secure.SecureConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -31,7 +32,7 @@ public class IgnoreUrlsRemoveJwtFilter implements WebFilter {
         List<String> ignoreUrls = secureConfig.getIgnore().getUris();
         for (String ignoreUrl : ignoreUrls) {
             if (pathMatcher.match(ignoreUrl, uri.getPath())) {
-                request = exchange.getRequest().mutate().header("Authorization", "").build();
+                request = exchange.getRequest().mutate().header(AuthConstant.AUTHORIZATION_HEADER, "").build();
                 exchange = exchange.mutate().request(request).build();
                 return chain.filter(exchange);
             }

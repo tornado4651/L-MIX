@@ -17,4 +17,13 @@ public interface UserService extends IService<User> {
      * @return
      */
     UserDTO getLoginUserInfo(String username);
+
+
+    /**
+     *
+     * @param username 用户名
+     * @param password 旧密码
+     * @param newPassword 新密码
+     */
+    void updatePassword(String username, String password, String newPassword);
 }

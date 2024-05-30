@@ -6,6 +6,8 @@ import com.tornado4651.lmix.cloud.common.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
 * @author tornado4651
 * @description 针对表【a_user】的数据库操作Mapper
@@ -21,6 +23,13 @@ public interface UserMapper extends BaseMapper<User> {
      * @return UserDTO封装类
      */
     UserDTO getLoginUserInfo(@Param("username") String username);
+
+    /**
+     * 根据用户id查询所有关联的角色名称
+     * @param userId 用户id
+     * @return 用户关联的角色名称列表
+     */
+    List<String> getRoleNamesByUserId(@Param("userId") Long userId);
 }
 
 
