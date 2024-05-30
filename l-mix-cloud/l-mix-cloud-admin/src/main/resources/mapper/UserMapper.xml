@@ -18,7 +18,7 @@
         <id property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="nickname" column="nickname"/>
-        <result property="password" column="password"/>
+        <result property="password" column="password" typeHandler="com.tornado4651.lmix.cloud.data.mybatis.handler.SecurityHandler"/>
         <result property="status" column="status"/>
         <!-- 角色信息使用 collection 属性来映射一对多关系 -->
         <collection property="roles" ofType="String" column="id" select="getRoleNamesByUserId"/>
