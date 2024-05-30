@@ -2,10 +2,8 @@ package com.tornado4651.lmix.cloud.common.exception;
 
 import com.tornado4651.lmix.cloud.common.bean.CommonResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import javax.annotation.PostConstruct;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * @author tornado4651
@@ -14,10 +12,6 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @RestControllerAdvice
 public class AllExceptionHandler {
-    @PostConstruct
-    public void init() {
-        System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-    }
 
     @ExceptionHandler(value = AlertException.class)
     public CommonResult alertResult(AlertException alertException){
