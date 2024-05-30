@@ -18,6 +18,10 @@ public class UserDTO {
      */
     private String username;
     /**
+     * 用户昵称
+     */
+    private String nickname;
+    /**
      * 用户密码（明文）
      */
     private String password;
