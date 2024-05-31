@@ -48,10 +48,18 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(response => {
+      var loginData= new URLSearchParams({
+        "grant_type": "password",
+        "client_id": "client-app",
+        "client_secret": "123456",
+        "username": username,
+        "password": password
+      })
+      login(loginData).then(response => {
         const { data } = response
-        commit('SET_TOKEN', data)
-        setToken(data)
+        const token_str= "Bearer " + data["token"]
+        commit('SET_TOKEN', token_str)
+        setToken(token_str)
         resolve()
       }).catch(error => {
         reject(error)
@@ -62,7 +70,7 @@ const actions = {
   // get login user base info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
+      getInfo().then(response => {
         const { data } = response
         if (!data) {
           return reject('登陆信息验证失败，请重新登陆！')

@@ -29,7 +29,7 @@ public interface UserMapper extends BaseMapper<User> {
      * @param userId 用户id
      * @return 用户关联的角色名称列表
      */
-    List<String> getRoleNamesByUserId(@Param("userId") Long userId);
+    List<String> getRolesByUserId(@Param("userId") Long userId);
 }
 
 

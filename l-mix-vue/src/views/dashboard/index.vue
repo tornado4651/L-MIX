@@ -17,6 +17,9 @@ export default {
     ...mapGetters([
       'user'
     ])
+  },
+  created() {
+    console.log('aaaaa: ', this.user)
   }
 }
 </script>

@@ -9,6 +9,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  * 获取登录用户信息
@@ -20,10 +22,11 @@ public class LoginUserHolder {
         //从Header中获取用户信息
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
-        String userStr = request.getHeader(AuthConstant.AUTHORIZATION_INFO_HEADER);
-        JSONObject userJsonObject = JSONObject.parseObject(userStr);
+        String loginUserInfoStr = request.getHeader(AuthConstant.AUTHORIZATION_INFO_HEADER);
+        String loginUserInfoJsonStr = new String(Base64.getDecoder().decode(loginUserInfoStr), StandardCharsets.UTF_8);
+        JSONObject loginUserInfo = JSONObject.parseObject(loginUserInfoJsonStr);
         UserDTO userDTO = new UserDTO();
-        BeanUtil.copyProperties(userJsonObject, userDTO);
+        BeanUtil.copyProperties(loginUserInfo, userDTO);
         return userDTO;
     }
 }

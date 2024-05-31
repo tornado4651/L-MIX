@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @FeignClient(value = "l-mix-cloud-admin")
 public interface AdminFeign {
-    @GetMapping("/test/currentUser")
+    @GetMapping("/usesr/currentUser")
     String currentUser();
 
-    @GetMapping("/test/adminInfo")
+    @GetMapping("/user/adminInfo")
     String adminInfo();
 
-    @GetMapping("/test/publicInfo")
+    @GetMapping("/user/publicInfo")
     String publicInfo();
 
 

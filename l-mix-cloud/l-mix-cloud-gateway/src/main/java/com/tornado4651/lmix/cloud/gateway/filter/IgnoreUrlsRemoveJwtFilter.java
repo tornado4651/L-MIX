@@ -22,18 +22,18 @@ import java.util.List;
 public class IgnoreUrlsRemoveJwtFilter implements WebFilter {
     @Autowired
     private SecureConfig secureConfig;
+
+    private final PathMatcher pathMatcher = new AntPathMatcher();
+
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         URI uri = request.getURI();
-        PathMatcher pathMatcher = new AntPathMatcher();
         //白名单路径移除JWT请求头
         List<String> ignoreUrls = secureConfig.getIgnore().getUris();
         for (String ignoreUrl : ignoreUrls) {
             if (pathMatcher.match(ignoreUrl, uri.getPath())) {
-                request = exchange.getRequest().mutate().header(AuthConstant.AUTHORIZATION_HEADER, "").build();
-                exchange = exchange.mutate().request(request).build();
-                return chain.filter(exchange);
+                exchange = exchange.mutate().request(r->r.header(AuthConstant.AUTHORIZATION_HEADER, "")).build();
             }
         }
         return chain.filter(exchange);

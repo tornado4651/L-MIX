@@ -14,7 +14,7 @@ USE `lmix`;
 
 LOCK TABLES `a_user` WRITE;
 INSERT INTO `a_user` (`id`, `username`, `password`, `nickname`, `gender`, `birthday`, `telephone`, `avatar`, `status`)
-VALUES (1,'admin','123456','管理员',1,'1996-01-01','13888888888','https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',1);
+VALUES (1,'admin','UPXuXEb6Uc867luchy0Bvw==','管理员',0,'1996-01-01','13888888888','https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',1);
 UNLOCK TABLES;
 
 

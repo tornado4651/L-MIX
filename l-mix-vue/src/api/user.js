@@ -2,23 +2,25 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/user/login',
-    method: 'post',
+    url: '/auth/oauth/token',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
     data
   })
 }
 
-export function getInfo(token) {
+export function getInfo() {
   return request({
-    url: '/user/loginInfo',
-    method: 'get',
-    // params: { token }
+    url: '/admin/user/currentUser',
+    method: 'GET',
   })
 }
 
 export function logout() {
   return request({
-    url: '/user/logout',
-    method: 'post'
+    url: '/admin/user/logout',
+    method: 'POST'
   })
 }

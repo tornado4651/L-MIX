@@ -1,6 +1,7 @@
 package com.tornado4651.lmix.cloud.common.exception;
 
 import com.tornado4651.lmix.cloud.common.bean.CommonResult;
+import com.tornado4651.lmix.cloud.common.bean.CommonResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -22,8 +23,8 @@ public class AllExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     public CommonResult commonResult(Exception e){
-        log.error("产生异常：{}", e.getMessage());
+        log.error("服务器异常：{}", e.getMessage());
         e.printStackTrace();
-        return CommonResult.failed(e.getMessage());
+        return CommonResult.failed(CommonResultCode.INTERNAL_ERROR, e.getMessage());
     }
 }

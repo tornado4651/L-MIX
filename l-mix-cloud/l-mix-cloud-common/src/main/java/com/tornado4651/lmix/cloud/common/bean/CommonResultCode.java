@@ -5,7 +5,9 @@ package com.tornado4651.lmix.cloud.common.bean;
  */
 public enum CommonResultCode {
     SUCCESS(200, "操作成功"),
-    FAILED(500, "操作失败"),
+    FAILED(500, "告警通知"),
+    INTERNAL_ERROR(501, "服务器内部异常"),
+
     VALIDATE_FAILED(404, "参数检验失败"),
     UNAUTHORIZED(401, "暂未登录或token已经过期"),
     FORBIDDEN(403, "没有相关权限");

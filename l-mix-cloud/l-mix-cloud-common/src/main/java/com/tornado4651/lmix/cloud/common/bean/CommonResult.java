@@ -71,11 +71,11 @@ public class CommonResult {
 
     /**
      * 失败返回结果
-     * @param errorCode 错误码
-     * @param message 错误信息
+     * @param errorCode 错误码枚举
+     * @param data 错误数据 / 提示
      */
-    public static CommonResult failed(CommonResultCode errorCode, String message) {
-        return new CommonResult(errorCode.getCode(), message, null);
+    public static CommonResult failed(CommonResultCode errorCode, Object data) {
+        return new CommonResult(errorCode.getCode(), errorCode.getMessage(), data);
     }
 
     /**

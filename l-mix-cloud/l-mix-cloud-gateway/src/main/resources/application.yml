@@ -41,11 +41,11 @@ lmix:
   secure:
     ignore:
       uris: # 配置白名单路径
-        - "/actuator/**"
         - "/auth/oauth/token"
+        - "/actuator/**"
         - "/api/public/**"
     auth_url_roles:
-      - uri: "/admin/test/adminInfo"
+      - uri: "/admin/user/adminInfo"
         roles: ["ADMIN"]
-      - uri: "/admin/test/currentUser"
+      - uri: "/admin/user/currentUser"
         roles: ["ADMIN","USER"]
