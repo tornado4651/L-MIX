@@ -45,7 +45,7 @@ lmix:
         - "/actuator/**"
         - "/api/public/**"
     auth_url_roles:
-      - uri: "/admin/user/adminInfo"
-        roles: ["ADMIN"]
-      - uri: "/admin/user/currentUser"
-        roles: ["ADMIN","USER"]
+      - uri: "/auth/**"
+        roles: ADMIN
+      - uri: "/admin/**"
+        roles: ADMIN
