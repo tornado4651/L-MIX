@@ -15,6 +15,7 @@
     <modules>
         <module>l-mix-cloud-data-mybatis</module>
         <module>l-mix-cloud-data-redis</module>
+        <module>l-mix-cloud-data-kafka</module>
     </modules>
 
     <properties>
@@ -22,6 +23,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <pagehelper.version>5.3.0</pagehelper.version>
+        <jackson-databind.version>2.14.2</jackson-databind.version>
     </properties>
 
     <dependencies>
@@ -54,6 +56,12 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper</artifactId>
                 <version>${pagehelper.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
