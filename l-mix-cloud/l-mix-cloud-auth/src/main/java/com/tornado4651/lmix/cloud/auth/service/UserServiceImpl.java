@@ -2,7 +2,7 @@ package com.tornado4651.lmix.cloud.auth.service;
 
 import com.tornado4651.lmix.cloud.auth.constant.MessageConstant;
 import com.tornado4651.lmix.cloud.auth.domain.SecurityUserDetail;
-import com.tornado4651.lmix.cloud.common.dto.UserDTO;
+import com.tornado4651.lmix.common.dto.UserDTO;
 import com.tornado4651.lmix.cloud.auth.feign.AdminFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;

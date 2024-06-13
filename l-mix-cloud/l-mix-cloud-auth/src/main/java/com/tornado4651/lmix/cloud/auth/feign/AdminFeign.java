@@ -1,6 +1,6 @@
 package com.tornado4651.lmix.cloud.auth.feign;
 
-import com.tornado4651.lmix.cloud.common.dto.UserDTO;
+import com.tornado4651.lmix.common.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;

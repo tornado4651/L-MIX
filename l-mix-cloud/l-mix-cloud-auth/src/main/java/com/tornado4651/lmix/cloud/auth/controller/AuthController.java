@@ -2,8 +2,8 @@ package com.tornado4651.lmix.cloud.auth.controller;
 
 import com.tornado4651.lmix.cloud.auth.domain.Oauth2TokenDto;
 import com.tornado4651.lmix.cloud.auth.holder.LoginUserHolder;
-import com.tornado4651.lmix.cloud.common.bean.CommonResult;
-import com.tornado4651.lmix.cloud.common.dto.UserDTO;
+import com.tornado4651.lmix.common.bean.CommonResult;
+import com.tornado4651.lmix.common.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;

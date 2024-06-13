@@ -1,7 +1,7 @@
 package com.tornado4651.lmix.cloud.admin.controller;
 
 import com.tornado4651.lmix.cloud.admin.holder.LoginUserHolder;
-import com.tornado4651.lmix.cloud.common.bean.CommonResult;
+import com.tornado4651.lmix.common.bean.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

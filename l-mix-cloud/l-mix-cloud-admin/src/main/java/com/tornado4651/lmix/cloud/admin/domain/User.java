@@ -3,7 +3,7 @@ package com.tornado4651.lmix.cloud.admin.domain;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.tornado4651.lmix.cloud.data.mybatis.handler.SecurityHandler;
+import com.tornado4651.lmix.data.mybatis.handler.SecurityHandler;
 import lombok.Data;
 
 import java.io.Serializable;

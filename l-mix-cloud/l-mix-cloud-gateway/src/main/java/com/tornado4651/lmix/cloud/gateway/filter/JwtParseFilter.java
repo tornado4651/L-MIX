@@ -2,7 +2,7 @@ package com.tornado4651.lmix.cloud.gateway.filter;
 
 import cn.hutool.core.util.StrUtil;
 import com.nimbusds.jose.JWSObject;
-import com.tornado4651.lmix.cloud.common.constants.AuthConstant;
+import com.tornado4651.lmix.common.constants.AuthConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;

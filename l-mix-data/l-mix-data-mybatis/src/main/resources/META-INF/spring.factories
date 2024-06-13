@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.tornado4651.lmix.cloud.data.mybatis.handler.SecurityHandler
+  com.tornado4651.lmix.data.mybatis.handler.SecurityHandler

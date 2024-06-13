@@ -2,9 +2,9 @@ package com.tornado4651.lmix.cloud.auth.holder;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.fastjson2.JSONObject;
-import com.tornado4651.lmix.cloud.common.constants.AuthConstant;
-import com.tornado4651.lmix.cloud.common.dto.UserDTO;
-import com.tornado4651.lmix.cloud.common.exception.ErrorException;
+import com.tornado4651.lmix.common.constants.AuthConstant;
+import com.tornado4651.lmix.common.dto.UserDTO;
+import com.tornado4651.lmix.common.exception.ErrorException;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 

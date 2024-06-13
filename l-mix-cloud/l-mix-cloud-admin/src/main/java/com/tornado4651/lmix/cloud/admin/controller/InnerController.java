@@ -1,7 +1,7 @@
 package com.tornado4651.lmix.cloud.admin.controller;
 
 import com.tornado4651.lmix.cloud.admin.service.UserService;
-import com.tornado4651.lmix.cloud.common.dto.UserDTO;
+import com.tornado4651.lmix.common.dto.UserDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

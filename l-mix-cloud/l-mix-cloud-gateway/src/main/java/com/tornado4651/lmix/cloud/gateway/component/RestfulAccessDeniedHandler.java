@@ -1,8 +1,8 @@
 package com.tornado4651.lmix.cloud.gateway.component;
 
 import cn.hutool.json.JSONUtil;
-import com.tornado4651.lmix.cloud.common.bean.CommonResult;
-import com.tornado4651.lmix.cloud.common.bean.CommonResultCode;
+import com.tornado4651.lmix.common.bean.CommonResult;
+import com.tornado4651.lmix.common.bean.CommonResultCode;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

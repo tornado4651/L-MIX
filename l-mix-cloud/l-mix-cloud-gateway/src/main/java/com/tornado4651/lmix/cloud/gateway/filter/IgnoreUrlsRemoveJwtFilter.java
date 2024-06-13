@@ -1,6 +1,6 @@
 package com.tornado4651.lmix.cloud.gateway.filter;
 
-import com.tornado4651.lmix.cloud.common.constants.AuthConstant;
+import com.tornado4651.lmix.common.constants.AuthConstant;
 import com.tornado4651.lmix.cloud.gateway.config.secure.SecureConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;

@@ -2,7 +2,7 @@ package com.tornado4651.lmix.cloud.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tornado4651.lmix.cloud.admin.domain.User;
-import com.tornado4651.lmix.cloud.common.dto.UserDTO;
+import com.tornado4651.lmix.common.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -2,7 +2,7 @@ package com.tornado4651.lmix.cloud.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.tornado4651.lmix.cloud.admin.domain.User;
-import com.tornado4651.lmix.cloud.common.dto.UserDTO;
+import com.tornado4651.lmix.common.dto.UserDTO;
 
 /**
 * @author tornado4651
