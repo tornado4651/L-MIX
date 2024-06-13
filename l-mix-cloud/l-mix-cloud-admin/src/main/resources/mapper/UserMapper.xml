@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tornado4651.lmix.cloud.admin.mapper.UserMapper">
+<mapper namespace="com.tornado4651.lmix.admin.mapper.UserMapper">
 
-    <resultMap id="BaseResultMap" type="com.tornado4651.lmix.cloud.admin.domain.User">
+    <resultMap id="BaseResultMap" type="com.tornado4651.lmix.admin.domain.User">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="username" column="username" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>
@@ -14,11 +14,11 @@
             <result property="status" column="status" jdbcType="TINYINT"/>
     </resultMap>
 
-    <resultMap id="loginUserInfoMap" type="com.tornado4651.lmix.cloud.common.dto.UserDTO">
+    <resultMap id="loginUserInfoMap" type="com.tornado4651.lmix.common.dto.UserDTO">
         <id property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="nickname" column="nickname"/>
-        <result property="password" column="password" typeHandler="com.tornado4651.lmix.cloud.data.mybatis.handler.SecurityHandler"/>
+        <result property="password" column="password" typeHandler="com.tornado4651.lmix.data.mybatis.handler.SecurityHandler"/>
         <result property="telephone" column="telephone"/>
         <result property="birthday" column="birthday"/>
         <result property="avatar" column="avatar"/>
@@ -29,7 +29,7 @@
     </resultMap>
 
     <select id="getLoginUserInfo"
-            resultType="com.tornado4651.lmix.cloud.common.dto.UserDTO"
+            resultType="com.tornado4651.lmix.common.dto.UserDTO"
             resultMap="loginUserInfoMap">
         <if test="username != null and username != ''">
             select a_user.id, a_user.username, a_user.nickname, a_user.password, a_user.telephone,

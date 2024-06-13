@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.tornado4651.lmix.cloud</groupId>
+        <groupId>com.tornado4651.lmix</groupId>
         <artifactId>l-mix-cloud</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -14,8 +14,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.tornado4651.lmix.cloud</groupId>
-            <artifactId>l-mix-cloud-common</artifactId>
+            <groupId>com.tornado4651.lmix</groupId>
+            <artifactId>l-mix-common</artifactId>
             <version>1.0.0</version>
         </dependency>
 
