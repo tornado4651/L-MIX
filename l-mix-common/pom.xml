@@ -7,7 +7,7 @@
     </parent>
     <version>1.0.0</version>
 
-    <artifactId>l-mix-cloud-common</artifactId>
+    <artifactId>l-mix-common</artifactId>
     <name>l-mix-cloud-common</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
