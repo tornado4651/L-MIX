@@ -1,4 +1,4 @@
-package com.tornado4651.lmix.data.redis;
+package com.tornado4651.lmix.data.cache;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;

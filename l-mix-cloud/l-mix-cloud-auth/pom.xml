@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>com.tornado4651.lmix</groupId>
-            <artifactId>l-mix-data-redis</artifactId>
+            <artifactId>l-mix-data-cache</artifactId>
             <version>1.0.0</version>
         </dependency>
 
