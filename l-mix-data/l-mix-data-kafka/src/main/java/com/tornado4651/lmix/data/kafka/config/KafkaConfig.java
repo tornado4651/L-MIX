@@ -13,6 +13,6 @@ import org.springframework.context.annotation.Configuration;
 public class KafkaConfig {
     @Bean
     public NewTopic testTopic() {
-        return new NewTopic("test-topic", 1, (short) 1);
+        return new NewTopic("test-topic", 2, (short) 1);
     }
 }
