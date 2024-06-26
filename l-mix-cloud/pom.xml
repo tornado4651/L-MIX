@@ -21,6 +21,7 @@
 		<module>l-mix-cloud-gateway</module>
 		<module>l-mix-cloud-api</module>
 		<module>l-mix-cloud-auth</module>
+        <module>l-mix-cloud-business</module>
     </modules>
 
 </project>
