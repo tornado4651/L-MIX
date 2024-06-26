@@ -5,18 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.tornado4651.lmix</groupId>
-        <artifactId>l-mix-cloud</artifactId>
+        <artifactId>l-mix-cloud-business</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>l-mix-cloud-business</artifactId>
-    <name>lmix 业务功能呢聚合模块</name>
-    <description>该模块不编写具体功能代码，作为业务功能的整体合并模块</description>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>l-mix-cloud-business-chat</module>
-    </modules>
+    <artifactId>l-mix-cloud-business-chat</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -26,8 +19,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.tornado4651.lmix</groupId>
+            <artifactId>l-mix-data-mybatis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tornado4651.lmix</groupId>
+            <artifactId>l-mix-data-mq</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 
