@@ -15,4 +15,9 @@ public class KafkaConfig {
     public NewTopic testTopic() {
         return new NewTopic("test-topic", 2, (short) 1);
     }
+
+    @Bean
+    public NewTopic delyTopic() {
+        return new NewTopic("delay-topic", 1, (short) 1);
+    }
 }

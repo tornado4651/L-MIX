@@ -9,7 +9,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>l-mix-data-kafka</artifactId>
+    <artifactId>l-mix-data-mq</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

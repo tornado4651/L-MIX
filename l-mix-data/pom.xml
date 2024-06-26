@@ -17,7 +17,7 @@
     <modules>
         <module>l-mix-data-mybatis</module>
         <module>l-mix-data-cache</module>
-        <module>l-mix-data-kafka</module>
+        <module>l-mix-data-mq</module>
     </modules>
 
     <properties>
