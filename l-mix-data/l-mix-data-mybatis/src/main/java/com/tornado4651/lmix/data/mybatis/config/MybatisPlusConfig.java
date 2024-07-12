@@ -2,12 +2,9 @@ package com.tornado4651.lmix.data.mybatis.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
-import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-import org.apache.ibatis.session.SqlSessionFactory;
+import com.tornado4651.lmix.data.mybatis.intercepter.SqlInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 
 /**
  * @author tornado4651
@@ -31,15 +28,11 @@ public class MybatisPlusConfig {
     }
 
     /**
-     * 注册sqlSession工厂类
+     * 注册自定义日志插件
+     * @return
      */
     @Bean
-    public SqlSessionFactory sqlSessionFactory() throws Exception {
-        MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
-        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        factoryBean.setMapperLocations(resolver.getResources("mapper/**/*.xml"));
-        //添加分页插件
-        factoryBean.setPlugins(paginationInterceptor());
-        return factoryBean.getObject();
+    public SqlInterceptor sqlInterceptor() {
+        return new SqlInterceptor();
     }
 }
