@@ -24,5 +24,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.tornado4651.lmix</groupId>
+            <artifactId>l-mix-cloud-business-chat</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
     </dependencies>
 </project>
